@@ -2,24 +2,42 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
           content="Dra. Beatriz Gallego Castilho - atendimento odontológico 24 horas em São Carlos, SP.">
 
     <meta name="robots" content="index, follow">
-
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
     <meta name="referrer" content="strict-origin-when-cross-origin">
-
-    <meta name="permissions-policy"
-          content="camera=(), microphone=(), geolocation=()">
 
     <title>Dra. Beatriz Gallego Castilho | Dentista 24 horas</title>
 
     <style>
+
+        /* =====================================================
+           BASE
+        ===================================================== */
+
+        :root {
+            --primary: #087f8c;
+            --primary-dark: #05616c;
+            --primary-light: #e8f7f8;
+
+            --dark: #12343b;
+            --text: #526970;
+            --muted: #71858b;
+
+            --white: #ffffff;
+            --background: #f8fbfc;
+            --border: #e4eef0;
+
+            --shadow: 0 20px 60px rgba(18, 52, 59, 0.10);
+            --shadow-small: 0 10px 30px rgba(18, 52, 59, 0.08);
+
+            --radius: 22px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -31,517 +49,1435 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #183b4f;
-            background: #ffffff;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: var(--dark);
+            background: var(--white);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::selection {
+            background: var(--primary);
+            color: white;
         }
 
         a {
-            text-decoration: none;
             color: inherit;
+            text-decoration: none;
         }
 
         img {
             max-width: 100%;
         }
 
-        /* HEADER */
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* =====================================================
+           ANIMAÇÕES
+        ===================================================== */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes floating {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(32, 182, 90, 0.35);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(32, 182, 90, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(32, 182, 90, 0);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-120%);
+            }
+
+            100% {
+                transform: translateX(120%);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255,255,255,0.97);
-            border-bottom: 1px solid #e5eef2;
+
+            background: rgba(255, 255, 255, 0.90);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(228, 238, 240, 0.8);
+
+            transition: 0.3s ease;
         }
 
         .nav {
-            max-width: 1150px;
+            width: min(1160px, calc(100% - 40px));
             margin: auto;
-            padding: 18px 20px;
+
+            min-height: 76px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+
+            gap: 25px;
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: #167c91;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: var(--dark);
+            font-weight: 800;
+            letter-spacing: -0.4px;
         }
 
-        .logo span {
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 13px;
+
+            background: var(--primary-light);
+            color: var(--primary);
+
+            font-size: 20px;
+        }
+
+        .logo-text span {
             display: block;
-            font-size: 12px;
-            font-weight: 400;
-            color: #607d8b;
+
+            color: var(--primary);
+
+            font-size: 17px;
+            line-height: 1.1;
+        }
+
+        .logo-text small {
+            display: block;
+
+            margin-top: 3px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
         }
 
         nav {
             display: flex;
-            gap: 24px;
             align-items: center;
+            gap: 28px;
         }
 
-        nav a {
+        nav a:not(.nav-button) {
+            position: relative;
+
+            color: #52666d;
+
             font-size: 14px;
             font-weight: 600;
-            color: #365563;
-            transition: 0.2s;
+
+            transition: color 0.25s ease;
         }
 
-        nav a:hover {
-            color: #167c91;
+        nav a:not(.nav-button)::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--primary);
+
+            transition: width 0.25s ease;
+        }
+
+        nav a:not(.nav-button):hover {
+            color: var(--primary);
+        }
+
+        nav a:not(.nav-button):hover::after {
+            width: 100%;
         }
 
         .nav-button {
-            background: #167c91;
-            color: white !important;
-            padding: 11px 17px;
+            position: relative;
+            overflow: hidden;
+
+            padding: 11px 19px;
+
             border-radius: 30px;
+
+            background: var(--primary);
+            color: white !important;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            box-shadow: 0 8px 20px rgba(8, 127, 140, 0.18);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
-        /* HERO */
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(8, 127, 140, 0.25);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .hero {
-            background: linear-gradient(135deg, #eefafd, #ffffff);
-            padding: 90px 20px;
+            position: relative;
+            overflow: hidden;
+
+            padding: 105px 20px 110px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(8, 127, 140, 0.10),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f4fbfc 0%,
+                    #ffffff 60%
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            right: -220px;
+            top: 80px;
+
+            border-radius: 50%;
+
+            background: rgba(8, 127, 140, 0.05);
+
+            animation: floating 6s ease-in-out infinite;
         }
 
         .hero-container {
-            max-width: 1150px;
+            position: relative;
+            z-index: 2;
+
+            width: min(1160px, calc(100% - 40px));
             margin: auto;
+
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.05fr 0.95fr;
+
             align-items: center;
-            gap: 60px;
+
+            gap: 80px;
+        }
+
+        .hero-content {
+            animation: fadeUp 0.9s ease both;
         }
 
         .tag {
-            display: inline-block;
-            background: #dff4f7;
-            color: #167c91;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 23px;
+
             padding: 8px 14px;
+
+            border: 1px solid #cdebed;
             border-radius: 30px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 20px;
+
+            background: rgba(232, 247, 248, 0.75);
+
+            color: var(--primary);
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .tag::before {
+            content: "";
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #24ad63;
+
+            box-shadow: 0 0 0 5px rgba(36, 173, 99, 0.10);
         }
 
         .hero h1 {
-            font-size: clamp(38px, 5vw, 64px);
-            line-height: 1.05;
-            margin-bottom: 22px;
-            color: #123c4d;
+            max-width: 700px;
+
+            margin-bottom: 24px;
+
+            color: var(--dark);
+
+            font-size: clamp(42px, 5.2vw, 70px);
+
+            line-height: 1.02;
+
+            letter-spacing: -3px;
         }
 
         .hero h1 span {
-            color: #167c91;
+            display: block;
+
+            color: var(--primary);
         }
 
-        .hero p {
-            color: #607d8b;
+        .hero-description {
+            max-width: 570px;
+
+            margin-bottom: 32px;
+
+            color: var(--text);
+
             font-size: 18px;
-            max-width: 600px;
-            margin-bottom: 30px;
+            line-height: 1.8;
         }
 
         .buttons {
             display: flex;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 14px;
+
+            gap: 13px;
         }
 
         .button {
-            display: inline-block;
-            padding: 14px 22px;
-            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 49px;
+
+            padding: 0 22px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
             font-weight: 700;
-            transition: 0.2s;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .button::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 80%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.25),
+                transparent
+            );
+
+            transform: skewX(-20deg);
+        }
+
+        .button:hover::before {
+            animation: shine 0.7s ease;
         }
 
         .button-primary {
-            background: #167c91;
+            background: var(--primary);
             color: white;
+
+            box-shadow:
+                0 12px 25px rgba(8, 127, 140, 0.18);
         }
 
         .button-primary:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 17px 30px rgba(8, 127, 140, 0.25);
         }
 
         .button-secondary {
-            border: 1px solid #c8dce2;
-            color: #167c91;
+            border: 1px solid #d6e5e8;
+
             background: white;
+
+            color: var(--dark);
+
+            box-shadow: 0 5px 20px rgba(18, 52, 59, 0.04);
         }
 
-        /* FOTO */
+        .button-secondary:hover {
+            transform: translateY(-3px);
+
+            border-color: #b8dadd;
+
+            color: var(--primary);
+        }
+
+        .hero-info {
+            display: flex;
+            gap: 25px;
+
+            margin-top: 35px;
+        }
+
+        .hero-info-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hero-info-item strong {
+            color: var(--dark);
+        }
+
+        .hero-photo-wrap {
+            position: relative;
+
+            animation: fadeRight 1s ease 0.15s both;
+        }
 
         .hero-photo {
-            width: 100%;
-            max-width: 470px;
-            height: 470px;
+            position: relative;
+
+            width: min(470px, 100%);
+            height: 520px;
+
             margin: auto;
-            border-radius: 30px;
+
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(23, 83, 100, 0.16);
-            background: #eaf5f7;
+
+            border-radius: 32px;
+
+            background: #edf7f8;
+
+            box-shadow: var(--shadow);
+        }
+
+        .hero-photo::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 55%,
+                    rgba(18, 52, 59, 0.13)
+                );
+
+            pointer-events: none;
         }
 
         .hero-photo img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
             display: block;
+
+            transition: transform 0.8s ease;
         }
 
-        /* SEÇÕES */
+        .hero-photo:hover img {
+            transform: scale(1.035);
+        }
+
+        .photo-badge {
+            position: absolute;
+
+            z-index: 5;
+
+            left: -25px;
+            bottom: 28px;
+
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            padding: 14px 18px;
+
+            border: 1px solid rgba(255,255,255,0.8);
+            border-radius: 16px;
+
+            background: rgba(255,255,255,0.94);
+
+            box-shadow: var(--shadow-small);
+
+            animation: floating 5s ease-in-out infinite;
+        }
+
+        .badge-icon {
+            width: 35px;
+            height: 35px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            background: var(--primary-light);
+
+            color: var(--primary);
+        }
+
+        .photo-badge strong {
+            display: block;
+
+            color: var(--dark);
+
+            font-size: 12px;
+        }
+
+        .photo-badge span {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           SEÇÕES
+        ===================================================== */
 
         section {
-            padding: 80px 20px;
+            padding: 100px 20px;
         }
 
         .container {
-            max-width: 1150px;
+            width: min(1160px, calc(100% - 40px));
             margin: auto;
         }
 
-        .section-title {
+        .section-heading {
+            max-width: 680px;
+            margin: 0 auto 55px;
+
             text-align: center;
-            margin-bottom: 45px;
         }
 
-        .section-title h2 {
-            font-size: 38px;
-            color: #123c4d;
+        .eyebrow {
+            display: inline-block;
+
             margin-bottom: 10px;
+
+            color: var(--primary);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
-        .section-title p {
-            color: #6b818a;
-            max-width: 650px;
-            margin: auto;
+        .section-heading h2 {
+            margin-bottom: 13px;
+
+            color: var(--dark);
+
+            font-size: clamp(30px, 4vw, 43px);
+
+            line-height: 1.15;
+            letter-spacing: -1.3px;
         }
 
-        /* EMERGÊNCIA */
+        .section-heading p {
+            color: var(--muted);
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           EMERGÊNCIA
+        ===================================================== */
 
         .emergency {
-            background: #167c91;
+            position: relative;
+            overflow: hidden;
+
+            padding: 65px 20px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    var(--primary-dark),
+                    var(--primary)
+                );
+
             color: white;
         }
 
+        .emergency::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            left: -140px;
+            top: -140px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
         .emergency-container {
-            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+
+            width: min(900px, calc(100% - 40px));
             margin: auto;
+
             text-align: center;
         }
 
         .emergency h2 {
-            font-size: 38px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+
+            font-size: clamp(27px, 4vw, 39px);
+
+            letter-spacing: -1px;
         }
 
         .emergency p {
-            opacity: 0.92;
             margin-bottom: 25px;
+
+            color: rgba(255,255,255,0.80);
         }
 
         .emergency .button {
             background: white;
-            color: #167c91;
+            color: var(--primary);
+
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
         }
 
-        /* SOBRE */
+        .emergency .button:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* =====================================================
+           SOBRE
+        ===================================================== */
+
+        .about {
+            background: white;
+        }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 55px;
+
+            grid-template-columns: 0.9fr 1.1fr;
+
             align-items: center;
+
+            gap: 80px;
         }
 
         .about-image {
-            width: 100%;
-            min-height: 430px;
-            border-radius: 25px;
+            position: relative;
+
+            min-height: 490px;
+
             overflow: hidden;
-            background: #eaf5f7;
+
+            border-radius: 28px;
+
+            background: #edf7f8;
+
+            box-shadow: var(--shadow-small);
         }
 
         .about-image img {
             width: 100%;
             height: 100%;
-            min-height: 430px;
+            min-height: 490px;
+
             object-fit: cover;
+
             display: block;
+
+            transition: transform 0.7s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.035);
+        }
+
+        .about-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent 60%,
+                    rgba(18,52,59,0.12)
+                );
         }
 
         .about-text h2 {
-            font-size: 38px;
-            color: #123c4d;
             margin-bottom: 20px;
+
+            color: var(--dark);
+
+            font-size: clamp(30px, 4vw, 45px);
+
+            line-height: 1.1;
+            letter-spacing: -1.5px;
         }
 
-        .about-text p {
-            color: #637984;
-            margin-bottom: 16px;
+        .about-text > p {
+            margin-bottom: 17px;
+
+            color: var(--text);
+
+            font-size: 15px;
+            line-height: 1.8;
         }
 
         .info-list {
+            display: grid;
+
+            gap: 13px;
+
+            margin-top: 28px;
+
             list-style: none;
-            margin-top: 25px;
         }
 
         .info-list li {
-            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            color: #405a62;
+
+            font-size: 14px;
             font-weight: 600;
         }
 
-        /* AVALIAÇÕES */
+        .info-list li::before {
+            content: "✓";
+
+            width: 25px;
+            height: 25px;
+
+            display: grid;
+            place-items: center;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: var(--primary-light);
+            color: var(--primary);
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           AVALIAÇÕES
+        ===================================================== */
 
         .reviews {
-            background: #f6fbfc;
+            background: var(--background);
         }
 
         .review-grid {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
+
+            gap: 20px;
         }
 
         .review {
+            position: relative;
+
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+
             background: white;
-            padding: 28px;
-            border-radius: 18px;
-            border: 1px solid #e2edf0;
+
+            box-shadow: 0 5px 20px rgba(18,52,59,0.025);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .review:hover {
+            transform: translateY(-7px);
+
+            border-color: #cde5e8;
+
+            box-shadow: var(--shadow-small);
+        }
+
+        .quote {
+            position: absolute;
+
+            top: 19px;
+            right: 25px;
+
+            color: #e5f1f2;
+
+            font-family: Georgia, serif;
+
+            font-size: 55px;
+
+            line-height: 1;
         }
 
         .stars {
-            color: #e1a72c;
+            margin-bottom: 18px;
+
+            color: #dca62d;
+
             letter-spacing: 3px;
-            margin-bottom: 15px;
+
+            font-size: 14px;
         }
 
         .review p {
-            color: #5d727c;
-            font-size: 15px;
+            position: relative;
+            z-index: 2;
+
+            color: var(--text);
+
+            font-size: 14px;
+
+            line-height: 1.8;
         }
 
-        /* CONTATO */
+
+        /* =====================================================
+           CONTATO
+        ===================================================== */
 
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
+
+            grid-template-columns: 0.85fr 1.15fr;
+
+            gap: 25px;
+
+            align-items: stretch;
         }
 
         .contact-card {
-            padding: 30px;
-            background: #f6fbfc;
-            border-radius: 20px;
+            padding: 35px;
+
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f7fbfc,
+                    #ffffff
+                );
+
+            box-shadow: var(--shadow-small);
         }
 
         .contact-card h3 {
-            margin-bottom: 15px;
-            color: #123c4d;
+            margin-bottom: 22px;
+
+            color: var(--dark);
+
+            font-size: 24px;
         }
 
-        .contact-card p {
-            color: #607d8b;
-            margin-bottom: 12px;
+        .contact-item {
+            display: flex;
+            gap: 13px;
+
+            margin-bottom: 22px;
+        }
+
+        .contact-icon {
+            width: 39px;
+            height: 39px;
+
+            display: grid;
+            place-items: center;
+
+            flex-shrink: 0;
+
+            border-radius: 11px;
+
+            background: var(--primary-light);
+
+            color: var(--primary);
+
+            font-size: 15px;
+        }
+
+        .contact-item strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            color: var(--dark);
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item p {
+            color: var(--text);
+
+            font-size: 14px;
+            line-height: 1.55;
         }
 
         .map {
             width: 100%;
-            min-height: 380px;
+            min-height: 420px;
+
             border: 0;
-            border-radius: 20px;
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow-small);
         }
 
-        /* CTA */
+
+        /* =====================================================
+           CTA
+        ===================================================== */
 
         .cta {
-            background: #eefafd;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef9fa,
+                    #f9fcfc
+                );
+
             text-align: center;
         }
 
+        .cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            right: -160px;
+            top: -160px;
+
+            border-radius: 50%;
+
+            background: rgba(8,127,140,0.05);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
         .cta h2 {
-            font-size: 38px;
-            color: #123c4d;
-            margin-bottom: 15px;
+            margin-bottom: 13px;
+
+            color: var(--dark);
+
+            font-size: clamp(30px, 4vw, 42px);
+
+            letter-spacing: -1px;
         }
 
         .cta p {
-            color: #637984;
-            margin-bottom: 25px;
+            margin-bottom: 26px;
+
+            color: var(--muted);
         }
 
-        /* FOOTER */
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
 
         footer {
-            background: #123c4d;
+            padding: 30px 20px;
+
+            background: #102f35;
+
             color: white;
-            padding: 35px 20px;
         }
 
         .footer-container {
-            max-width: 1150px;
+            width: min(1160px, calc(100% - 40px));
             margin: auto;
+
             display: flex;
+            align-items: center;
             justify-content: space-between;
+
             gap: 20px;
             flex-wrap: wrap;
         }
 
         footer p {
-            color: #c9dbe1;
-            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+
+            font-size: 12px;
         }
 
-        /* WHATSAPP */
+
+        /* =====================================================
+           WHATSAPP
+        ===================================================== */
 
         .whatsapp {
             position: fixed;
-            right: 20px;
-            bottom: 20px;
+
+            right: 22px;
+            bottom: 22px;
+
             z-index: 999;
-            background: #20b65a;
-            color: white;
+
             width: 58px;
             height: 58px;
+
+            display: grid;
+            place-items: center;
+
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 25px;
-            font-weight: bold;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+            background: #20b65a;
+            color: white;
+
+            font-size: 23px;
+
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+
+            animation: pulse 2.8s infinite;
+
+            transition:
+                transform 0.25s ease;
         }
 
-        /* RESPONSIVO */
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
 
-        @media (max-width: 850px) {
+
+        /* =====================================================
+           RESPONSIVO
+        ===================================================== */
+
+        @media (max-width: 900px) {
 
             nav {
                 display: none;
             }
 
-            .hero-container,
-            .about-grid,
-            .contact-grid {
+            .hero-container {
                 grid-template-columns: 1fr;
+
+                gap: 55px;
             }
 
-            .hero {
-                padding: 60px 20px;
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero-info {
+                justify-content: center;
             }
 
             .hero-photo {
-                height: 380px;
+                height: 480px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+
+            .info-list {
+                justify-items: center;
             }
 
             .review-grid {
                 grid-template-columns: 1fr;
             }
 
-            .about-image,
-            .about-image img {
-                min-height: 350px;
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 500px) {
 
-            .hero h1 {
-                font-size: 40px;
+        @media (max-width: 560px) {
+
+            .nav {
+                min-height: 68px;
             }
 
-            .section-title h2,
-            .about-text h2,
-            .cta h2,
-            .emergency h2 {
-                font-size: 30px;
+            .hero {
+                padding: 70px 15px 80px;
+            }
+
+            .container,
+            .hero-container,
+            .footer-container {
+                width: min(100% - 30px, 1160px);
+            }
+
+            section {
+                padding: 75px 15px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-info {
+                flex-direction: column;
+                align-items: center;
+
+                gap: 10px;
             }
 
             .hero-photo {
-                height: 320px;
+                height: 390px;
+
+                border-radius: 25px;
+            }
+
+            .photo-badge {
+                left: 15px;
+                bottom: 15px;
+            }
+
+            .about-image,
+            .about-image img {
+                min-height: 370px;
+            }
+
+            .contact-card {
+                padding: 25px;
+            }
+
+            .map {
+                min-height: 330px;
+            }
+
+            .whatsapp {
+                right: 16px;
+                bottom: 16px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header>
+
     <div class="nav">
 
-        <a href="#" class="logo">
-            Dra. Beatriz
-            <span>Odontologia</span>
+        <a href="#inicio" class="logo">
+
+            <div class="logo-icon">
+                ✦
+            </div>
+
+            <div class="logo-text">
+                <span>Dra. Beatriz</span>
+                <small>Odontologia</small>
+            </div>
+
         </a>
 
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#avaliacoes">Avaliações</a>
-            <a href="#contato">Contato</a>
 
-            <a class="nav-button"
-               href="https://wa.me/5516997574822"
-               target="_blank"
-               rel="noopener noreferrer">
-                WhatsApp
+        <nav>
+
+            <a href="#inicio">
+                Início
             </a>
+
+            <a href="#sobre">
+                Sobre
+            </a>
+
+            <a href="#avaliacoes">
+                Avaliações
+            </a>
+
+            <a href="#contato">
+                Contato
+            </a>
+
+            <a
+                class="nav-button"
+                href="https://wa.me/5516997574822"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                WhatsApp
+
+            </a>
+
         </nav>
 
     </div>
+
 </header>
 
 
 <main>
 
-    <!-- INÍCIO -->
 
-    <section class="hero" id="inicio">
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-        <div class="hero-container">
+<section class="hero" id="inicio">
 
-            <div>
+    <div class="hero-container">
 
-                <span class="tag">
-                    ATENDIMENTO 24 HORAS
+
+        <div class="hero-content">
+
+            <span class="tag">
+                ATENDIMENTO 24 HORAS
+            </span>
+
+
+            <h1>
+
+                Cuidado odontológico
+
+                <span>
+                    quando você precisar.
                 </span>
 
-                <h1>
-                    Cuidado odontológico
-                    <span>quando você precisar.</span>
-                </h1>
+            </h1>
 
-                <p>
-                    Atendimento odontológico em São Carlos, com
-                    disponibilidade 24 horas.
-                </p>
 
-                <div class="buttons">
+            <p class="hero-description">
 
-                    <a class="button button-primary"
-                       href="https://wa.me/5516997574822"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        Falar pelo WhatsApp
-                    </a>
+                Atendimento odontológico em São Carlos,
+                com disponibilidade 24 horas para você
+                e sua família.
 
-                    <a class="button button-secondary"
-                       href="tel:+5516997574822">
-                        Ligar agora
-                    </a>
+            </p>
+
+
+            <div class="buttons">
+
+                <a
+                    class="button button-primary"
+                    href="https://wa.me/5516997574822"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    Falar pelo WhatsApp
+
+                </a>
+
+
+                <a
+                    class="button button-secondary"
+                    href="tel:+5516997574822">
+
+                    Ligar agora
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-info">
+
+                <div class="hero-info-item">
+
+                    <strong>24h</strong>
+                    atendimento
+
+                </div>
+
+
+                <div class="hero-info-item">
+
+                    <strong>São Carlos</strong>
+                    SP
 
                 </div>
 
             </div>
 
+        </div>
+
+
+        <div class="hero-photo-wrap">
 
             <div class="hero-photo">
 
@@ -552,259 +1488,401 @@
 
             </div>
 
+
+            <div class="photo-badge">
+
+                <div class="badge-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Atendimento 24 horas
+                    </strong>
+
+                    <span>
+                        São Carlos - SP
+                    </span>
+
+                </div>
+
+            </div>
+
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- EMERGÊNCIA -->
+<!-- =========================================================
+     EMERGÊNCIA
+========================================================= -->
 
-    <section class="emergency">
+<section class="emergency">
 
-        <div class="emergency-container">
+    <div class="emergency-container reveal">
+
+        <span class="eyebrow"
+              style="color:#bcecef;">
+            Atendimento
+        </span>
+
+        <h2>
+            Precisando de atendimento odontológico?
+        </h2>
+
+        <p>
+            Entre em contato diretamente pelo telefone.
+        </p>
+
+        <a
+            class="button"
+            href="tel:+5516997574822">
+
+            (16) 99757-4822
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SOBRE
+========================================================= -->
+
+<section class="about" id="sobre">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+
+            <div class="about-image reveal">
+
+                <img
+                    src="imagens/foto1.jpg"
+                    alt="Dra. Beatriz Gallego Castilho"
+                    loading="lazy">
+
+            </div>
+
+
+            <div class="about-text reveal">
+
+                <span class="eyebrow">
+                    Sobre
+                </span>
+
+                <h2>
+                    Dra. Beatriz
+                    Gallego Castilho
+                </h2>
+
+                <p>
+                    Atendimento odontológico com atenção,
+                    cuidado e profissionalismo.
+                </p>
+
+                <p>
+                    O consultório está localizado no Centro
+                    de São Carlos, São Paulo, com atendimento
+                    disponível 24 horas.
+                </p>
+
+
+                <ul class="info-list">
+
+                    <li>
+                        Atendimento 24 horas
+                    </li>
+
+                    <li>
+                        Localização central
+                    </li>
+
+                    <li>
+                        Atendimento odontológico
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     AVALIAÇÕES
+========================================================= -->
+
+<section class="reviews" id="avaliacoes">
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+            <span class="eyebrow">
+                Experiências
+            </span>
 
             <h2>
-                Precisando de atendimento odontológico?
+                O que os pacientes dizem
             </h2>
 
             <p>
-                Atendimento disponível 24 horas.
+                Alguns comentários publicados pelos pacientes
+                sobre o atendimento.
             </p>
 
-            <a class="button"
-               href="tel:+5516997574822">
-                (16) 99757-4822
-            </a>
-
         </div>
 
-    </section>
+
+        <div class="review-grid">
 
 
-    <!-- SOBRE -->
+            <article class="review reveal">
 
-    <section id="sobre">
+                <span class="quote">
+                    “
+                </span>
 
-        <div class="container">
-
-            <div class="about-grid">
-
-                <div class="about-image">
-
-                    <img
-                        src="imagens/foto1.jpg"
-                        alt="Dra. Beatriz Gallego Castilho"
-                        loading="lazy">
-
+                <div class="stars">
+                    ★★★★★
                 </div>
-
-
-                <div class="about-text">
-
-                    <h2>
-                        Dra. Beatriz Gallego Castilho
-                    </h2>
-
-                    <p>
-                        Atendimento odontológico com atenção,
-                        cuidado e profissionalismo.
-                    </p>
-
-                    <p>
-                        O consultório está localizado no Centro
-                        de São Carlos, São Paulo, com atendimento
-                        24 horas.
-                    </p>
-
-                    <ul class="info-list">
-
-                        <li>
-                            ✓ Atendimento 24 horas
-                        </li>
-
-                        <li>
-                            ✓ Localização central
-                        </li>
-
-                        <li>
-                            ✓ Atendimento odontológico
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- AVALIAÇÕES -->
-
-    <section class="reviews" id="avaliacoes">
-
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>
-                    Avaliações
-                </h2>
 
                 <p>
-                    Confira alguns comentários de pacientes.
+                    “Excelente profissional, muito atenciosa
+                    e cuidadosa durante o atendimento.”
                 </p>
 
-            </div>
+            </article>
 
 
-            <div class="review-grid">
+            <article class="review reveal">
 
-                <article class="review">
+                <span class="quote">
+                    “
+                </span>
 
-                    <div class="stars">
-                        ★★★★★
-                    </div>
+                <div class="stars">
+                    ★★★★★
+                </div>
 
-                    <p>
-                        “Excelente profissional, muito atenciosa
-                        e cuidadosa durante o atendimento.”
-                    </p>
+                <p>
+                    “Explicou tudo com clareza e transmitiu
+                    muita segurança durante o atendimento.”
+                </p>
 
-                </article>
-
-
-                <article class="review">
-
-                    <div class="stars">
-                        ★★★★★
-                    </div>
-
-                    <p>
-                        “Explicou tudo com clareza e transmitiu
-                        muita segurança durante o atendimento.”
-                    </p>
-
-                </article>
+            </article>
 
 
-                <article class="review">
+            <article class="review reveal">
 
-                    <div class="stars">
-                        ★★★★★
-                    </div>
+                <span class="quote">
+                    “
+                </span>
 
-                    <p>
-                        “Atendimento excelente e muito profissional.”
-                    </p>
+                <div class="stars">
+                    ★★★★★
+                </div>
 
-                </article>
+                <p>
+                    “Atendimento excelente e muito profissional.”
+                </p>
 
-            </div>
+            </article>
+
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- CONTATO -->
+<!-- =========================================================
+     CONTATO
+========================================================= -->
 
-    <section id="contato">
+<section id="contato">
 
-        <div class="container">
-
-            <div class="section-title">
-
-                <h2>
-                    Entre em contato
-                </h2>
-
-                <p>
-                    Encontre a Dra. Beatriz em São Carlos.
-                </p>
-
-            </div>
+    <div class="container">
 
 
-            <div class="contact-grid">
+        <div class="section-heading reveal">
 
-                <div class="contact-card">
+            <span class="eyebrow">
+                Localização
+            </span>
 
-                    <h3>
-                        Informações
-                    </h3>
+            <h2>
+                Entre em contato
+            </h2>
 
-                    <p>
-                        <strong>Endereço:</strong><br>
-                        R. Maestro João Seppe, 900 -
-                        Centro, São Carlos - SP,
-                        13561-180
-                    </p>
+            <p>
+                Encontre a Dra. Beatriz no Centro de
+                São Carlos.
+            </p>
 
-                    <p>
-                        <strong>Telefone:</strong><br>
-                        (16) 99757-4822
-                    </p>
+        </div>
 
-                    <p>
-                        <strong>Horário:</strong><br>
-                        Atendimento 24 horas
-                    </p>
 
-                    <br>
+        <div class="contact-grid">
 
-                    <a class="button button-primary"
-                       href="https://wa.me/5516997574822"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        Chamar no WhatsApp
-                    </a>
+
+            <div class="contact-card reveal">
+
+                <h3>
+                    Informações
+                </h3>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Endereço
+                        </strong>
+
+                        <p>
+                            R. Maestro João Seppe, 900 -
+                            Centro, São Carlos - SP,
+                            13561-180
+                        </p>
+
+                    </div>
 
                 </div>
 
 
-                <iframe
-                    class="map"
-                    title="Localização da Dra. Beatriz Gallego Castilho"
-                    src="https://www.google.com/maps?q=R.%20Maestro%20Jo%C3%A3o%20Seppe%2C%20900%2C%20Centro%2C%20S%C3%A3o%20Carlos%20-%20SP&output=embed"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        ☎
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Telefone
+                        </strong>
+
+                        <p>
+                            (16) 99757-4822
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        24
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Horário
+                        </strong>
+
+                        <p>
+                            Atendimento 24 horas
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    class="button button-primary"
+                    href="https://wa.me/5516997574822"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    Chamar no WhatsApp
+
+                </a>
 
             </div>
 
+
+            <iframe
+                class="map reveal"
+                title="Localização da Dra. Beatriz Gallego Castilho"
+                src="https://www.google.com/maps?q=R.%20Maestro%20Jo%C3%A3o%20Seppe%2C%20900%2C%20Centro%2C%20S%C3%A3o%20Carlos%20-%20SP&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- CTA -->
+<!-- =========================================================
+     CTA
+========================================================= -->
 
-    <section class="cta">
+<section class="cta">
 
-        <div class="container">
+    <div class="container">
+
+        <div class="cta-content reveal">
+
+            <span class="eyebrow">
+                Fale conosco
+            </span>
 
             <h2>
                 Precisa de atendimento?
             </h2>
 
             <p>
-                Entre em contato diretamente.
+                Entre em contato diretamente com a Dra. Beatriz.
             </p>
 
-            <a class="button button-primary"
-               href="tel:+5516997574822">
+            <a
+                class="button button-primary"
+                href="tel:+5516997574822">
+
                 Ligar para (16) 99757-4822
+
             </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
 
 </main>
 
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -823,13 +1901,57 @@
 </footer>
 
 
-<a class="whatsapp"
-   href="https://wa.me/5516997574822"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Falar com a Dra. Beatriz pelo WhatsApp">
+<!-- =========================================================
+     WHATSAPP
+========================================================= -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/5516997574822"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Falar com a Dra. Beatriz pelo WhatsApp">
+
     ☎
+
 </a>
+
+
+<!-- =========================================================
+     ANIMAÇÕES
+========================================================= -->
+
+<script>
+    const elements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    elements.forEach((element) => {
+
+        observer.observe(element);
+
+    });
+</script>
+
 
 </body>
 </html>
