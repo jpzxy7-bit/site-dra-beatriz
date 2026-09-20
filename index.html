@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dra. Beatriz Gallego Castilho | Dentista 24 Horas</title>
+
+    <meta name="description"
+        content="Dra. Beatriz Gallego Castilho - atendimento odontológico 24 horas em São Carlos, SP. Entre em contato para atendimento.">
+
+    <meta name="theme-color" content="#0b6e8e">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #17232b;
+            background: #f7fbfc;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5eef1;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: auto;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            color: #075a75;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #0b6e8e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 13px;
+            color: #6a7b83;
+            font-weight: normal;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #334952;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #0b6e8e;
+        }
+
+        .nav-button {
+            background: #0b6e8e;
+            color: white !important;
+            padding: 11px 18px;
+            border-radius: 30px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 150px 25px 80px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 90% 20%, #dff5fa 0, transparent 35%),
+                linear-gradient(135deg, #f8fdff, #eef8fa);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e2f6fa;
+            color: #08657f;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .badge::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #16a36a;
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+            color: #123542;
+        }
+
+        h1 span {
+            color: #0b6e8e;
+        }
+
+        .hero-text {
+            font-size: 18px;
+            max-width: 650px;
+            color: #60737b;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 15px 23px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #0b6e8e;
+            color: white;
+            box-shadow: 0 10px 25px rgba(11,110,142,.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #075a75;
+        }
+
+        .btn-secondary {
+            border: 1px solid #cbdfe5;
+            background: white;
+            color: #164b5d;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: #0b6e8e;
+        }
+
+        /* CARD HERO */
+
+        .hero-card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px;
+            box-shadow: 0 25px 70px rgba(18,53,66,.12);
+            border: 1px solid #e4eef1;
+        }
+
+        .doctor-circle {
+            width: 110px;
+            height: 110px;
+            margin: auto auto 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg,#0b6e8e,#4db8d2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            color: white;
+        }
+
+        .hero-card h2 {
+            text-align: center;
+            color: #123542;
+            margin-bottom: 5px;
+        }
+
+        .hero-card > p {
+            text-align: center;
+            color: #74858c;
+            margin-bottom: 25px;
+        }
+
+        .info {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 1px solid #edf2f3;
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            background: #eaf8fb;
+            color: #0b6e8e;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info strong {
+            display: block;
+            color: #243e48;
+            font-size: 14px;
+        }
+
+        .info small {
+            color: #788a91;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 100px 25px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 55px;
+        }
+
+        .section-title small {
+            color: #0b6e8e;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #123542;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            color: #70838b;
+        }
+
+        /* ================= EMERGENCIA ================= */
+
+        .emergency {
+            background: #0b6e8e;
+            color: white;
+        }
+
+        .emergency-content {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .emergency h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .emergency p {
+            color: #d9f1f6;
+            max-width: 650px;
+        }
+
+        .emergency .btn {
+            background: white;
+            color: #075a75;
+            white-space: nowrap;
+        }
+
+        /* ================= SOBRE ================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 430px;
+            border-radius: 30px;
+            background:
+                linear-gradient(135deg, rgba(11,110,142,.85), rgba(65,177,204,.8)),
+                radial-gradient(circle, white, #cdeef4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 130px;
+            color: white;
+            box-shadow: 0 20px 50px rgba(11,110,142,.15);
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            color: #123542;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #667a82;
+            margin-bottom: 25px;
+        }
+
+        .qualities {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .quality {
+            padding: 15px;
+            border-radius: 12px;
+            background: #f1f8fa;
+            color: #234b59;
+            font-weight: 600;
+        }
+
+        /* ================= AVALIAÇÕES ================= */
+
+        .reviews {
+            background: #f0f8fa;
+        }
+
+        .rating {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .rating-number {
+            font-size: 60px;
+            font-weight: bold;
+            color: #123542;
+        }
+
+        .stars {
+            color: #f4b400;
+            font-size: 25px;
+            letter-spacing: 3px;
+        }
+
+        .rating p {
+            color: #71838a;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .review {
+            background: white;
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.05);
+        }
+
+        .review-stars {
+            color: #f4b400;
+            margin-bottom: 15px;
+        }
+
+        .review p {
+            color: #60737b;
+            font-size: 15px;
+        }
+
+        /* ================= CONTATO ================= */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 35px;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid #e2edef;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .contact-card h3 {
+            font-size: 25px;
+            color: #123542;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item-icon {
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+            background: #eaf8fb;
+            color: #0b6e8e;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: #23414b;
+        }
+
+        .contact-item span {
+            color: #71838a;
+            font-size: 14px;
+        }
+
+        .map {
+            min-height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #dfecee;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: 0;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            padding: 80px 25px;
+            background: linear-gradient(135deg,#083f52,#0b6e8e);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #d8eef3;
+            margin-bottom: 28px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #075a75;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #092b36;
+            color: white;
+            padding: 50px 25px 25px;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer a {
+            color: #aac1c8;
+            font-size: 14px;
+        }
+
+        footer a {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #1c4753;
+            color: #8faab2;
+            font-size: 13px;
+        }
+
+        /* ================= WHATSAPP ================= */
+
+        .whatsapp {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 999;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: #20b967;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 29px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.2);
+            transition: .3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        /* ================= RESPONSIVO ================= */
+
+        @media(max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero-content,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero-card {
+                max-width: 600px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .emergency-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            section {
+                padding: 70px 20px;
+            }
+
+            h1 {
+                font-size: 43px;
+            }
+
+            .section-title h2,
+            .about-text h2,
+            .cta h2,
+            .emergency h2 {
+                font-size: 32px;
+            }
+
+            .qualities {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                padding: 25px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .whatsapp {
+                width: 56px;
+                height: 56px;
+                right: 16px;
+                bottom: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+        <div class="nav">
+
+            <a href="#inicio" class="logo">
+                <div class="logo-icon">🦷</div>
+
+                <div>
+                    Dra. Beatriz
+                    <span>Dentista 24 horas</span>
+                </div>
+            </a>
+
+            <nav>
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#avaliacoes">Avaliações</a>
+                <a href="#contato">Contato</a>
+
+                <a href="tel:16997574822" class="nav-button">
+                    Ligar agora
+                </a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <div>
+
+                    <div class="badge">
+                        Atendimento 24 horas
+                    </div>
+
+                    <h1>
+                        Cuidado odontológico
+                        <span>quando você precisar.</span>
+                    </h1>
+
+                    <p class="hero-text">
+                        Atendimento profissional e humanizado em São Carlos,
+                        com foco no cuidado, segurança e tranquilidade dos pacientes.
+                    </p>
+
+                    <div class="buttons">
+
+                        <a href="tel:16997574822" class="btn btn-primary">
+                            📞 Ligar agora
+                        </a>
+
+                        <a href="https://wa.me/5516997574822"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn btn-secondary">
+                            💬 WhatsApp
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-card">
+
+                    <div class="doctor-circle">
+                        🦷
+                    </div>
+
+                    <h2>
+                        Dra. Beatriz Gallego Castilho
+                    </h2>
+
+                    <p>
+                        Dentista • São Carlos - SP
+                    </p>
+
+
+                    <div class="info">
+
+                        <div class="info-icon">
+                            🕐
+                        </div>
+
+                        <div>
+                            <strong>Atendimento</strong>
+                            <small>24 horas</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        <div class="info-icon">
+                            📍
+                        </div>
+
+                        <div>
+                            <strong>Localização</strong>
+                            <small>Centro, São Carlos - SP</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info">
+
+                        <div class="info-icon">
+                            ⭐
+                        </div>
+
+                        <div>
+                            <strong>Avaliação</strong>
+                            <small>5,0 ⭐ • 154 avaliações</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EMERGÊNCIA ================= -->
+
+        <section class="emergency">
+
+            <div class="emergency-content">
+
+                <div>
+                    <h2>Precisa de atendimento?</h2>
+
+                    <p>
+                        Em situações que precisam de atenção odontológica,
+                        entre em contato para obter informações sobre o atendimento.
+                    </p>
+                </div>
+
+                <a href="tel:16997574822" class="btn">
+                    📞 Ligar agora
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SOBRE ================= -->
+
+        <section id="sobre">
+
+            <div class="container">
+
+                <div class="about-grid">
+
+                    <div class="about-image">
+                        🦷
+                    </div>
+
+
+                    <div class="about-text">
+
+                        <small style="color:#0b6e8e;font-weight:bold;">
+                            SOBRE A PROFISSIONAL
+                        </small>
+
+                        <h2>
+                            Atendimento com cuidado e confiança.
+                        </h2>
+
+                        <p>
+                            A Dra. Beatriz Gallego Castilho é reconhecida
+                            pelos pacientes pelo atendimento atencioso,
+                            cuidadoso e profissional.
+                        </p>
+
+                        <p>
+                            As avaliações dos pacientes destacam a clareza
+                            nas explicações, a atenção durante os procedimentos
+                            e a segurança transmitida durante o atendimento.
+                        </p>
+
+
+                        <div class="qualities">
+
+                            <div class="quality">
+                                ✓ Atendimento humanizado
+                            </div>
+
+                            <div class="quality">
+                                ✓ Profissionalismo
+                            </div>
+
+                            <div class="quality">
+                                ✓ Atenção aos pacientes
+                            </div>
+
+                            <div class="quality">
+                                ✓ Segurança
+                            </div>
+
+                            <div class="quality">
+                                ✓ Clareza nas explicações
+                            </div>
+
+                            <div class="quality">
+                                ✓ Atendimento 24 horas
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AVALIAÇÕES ================= -->
+
+        <section class="reviews" id="avaliacoes">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <small>Avaliações</small>
+
+                    <h2>
+                        O que os pacientes dizem
+                    </h2>
+
+                    <p>
+                        Experiências compartilhadas pelos pacientes no Google.
+                    </p>
+
+                </div>
+
+
+                <div class="rating">
+
+                    <div class="rating-number">
+                        5,0
+                    </div>
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        154 avaliações no Google
+                    </p>
+
+                </div>
+
+
+                <div class="reviews-grid">
+
+                    <div class="review">
+
+                        <div class="review-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Desde a primeira consulta com a Dra. Beatriz
+                            fui muito bem recebido, com profissionalismo,
+                            atenção e dedicação. Sempre educada e explica
+                            com toda clareza, transmite confiança e realmente
+                            se preocupa com o bem-estar dos pacientes."
+                        </p>
+
+                    </div>
+
+
+                    <div class="review">
+
+                        <div class="review-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Fiz a retirada do meu siso com a Dra. Beatriz
+                            e estava muito nervosa, mas ela foi extremamente
+                            simpática, paciente e me transmitiu muita segurança.
+                            No pós-operatório também foi muito atenciosa."
+                        </p>
+
+                    </div>
+
+
+                    <div class="review">
+
+                        <div class="review-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Dra. Beatriz, uma excelente profissional.
+                            Extremamente atenciosa, cuidadosa, explica tudo
+                            certinho com calma e transmite a segurança que
+                            os clientes precisam."
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTATO ================= -->
+
+        <section id="contato">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <small>Contato</small>
+
+                    <h2>
+                        Entre em contato
+                    </h2>
+
+                    <p>
+                        Encontre a clínica ou fale diretamente pelo telefone.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-grid">
+
+                    <div class="contact-card">
+
+                        <h3>
+                            Informações
+                        </h3>
+
+
+                        <div class="contact-item">
+
+                            <div class="contact-item-icon">
+                                📍
+                            </div>
+
+                            <div>
+                                <strong>Endereço</strong>
+
+                                <span>
+                                    R. Maestro João Seppe, 900 - Centro,
+                                    São Carlos - SP, 13561-180
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <div class="contact-item-icon">
+                                📞
+                            </div>
+
+                            <div>
+                                <strong>Telefone</strong>
+
+                                <span>
+                                    (16) 99757-4822
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <div class="contact-item-icon">
+                                🕐
+                            </div>
+
+                            <div>
+                                <strong>Atendimento</strong>
+
+                                <span>
+                                    Aberto 24 horas
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="buttons">
+
+                            <a href="tel:16997574822"
+                               class="btn btn-primary">
+                                📞 Ligar
+                            </a>
+
+                            <a href="https://wa.me/5516997574822"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-secondary">
+                                💬 WhatsApp
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="map">
+
+                        <iframe
+                            src="https://www.google.com/maps?q=R.%20Maestro%20Jo%C3%A3o%20Seppe%2C%20900%2C%20Centro%2C%20S%C3%A3o%20Carlos%20-%20SP&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta">
+
+            <h2>
+                Precisa falar com a clínica?
+            </h2>
+
+            <p>
+                Entre em contato pelo telefone ou WhatsApp.
+            </p>
+
+            <a href="tel:16997574822" class="btn">
+                📞 (16) 99757-4822
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+
+                <h3>
+                    Dra. Beatriz Gallego Castilho
+                </h3>
+
+                <p>
+                    Dentista 24 horas em São Carlos - SP.
+                </p>
+
+                <p style="margin-top:10px;">
+                    Atendimento profissional e humanizado.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Navegação
+                </h3>
+
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#avaliacoes">Avaliações</a>
+                <a href="#contato">Contato</a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Contato
+                </h3>
+
+                <p>
+                    R. Maestro João Seppe, 900
+                </p>
+
+                <p>
+                    Centro - São Carlos/SP
+                </p>
+
+                <p>
+                    (16) 99757-4822
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Dra. Beatriz Gallego Castilho.
+            Todos os direitos reservados.
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= WHATSAPP ================= -->
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/5516997574822"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar pelo WhatsApp">
+
+        💬
+
+    </a>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // Evita envio acidental de formulários caso sejam adicionados futuramente
+        document.addEventListener("submit", function(event) {
+            event.preventDefault();
+        });
+
+        // Pequeno efeito no header durante a rolagem
+        window.addEventListener("scroll", function() {
+
+            const header = document.querySelector("header");
+
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 5px 25px rgba(0,0,0,.08)";
+            } else {
+                header.style.boxShadow = "none";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
