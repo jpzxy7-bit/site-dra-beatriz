@@ -2,16 +2,52 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dra. Beatriz Gallego Castilho | Dentista 24 Horas</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-        content="Dra. Beatriz Gallego Castilho - atendimento odontológico 24 horas em São Carlos, SP. Entre em contato para atendimento.">
+          content="Dra. Beatriz Gallego Castilho - atendimento odontológico 24 horas em São Carlos, SP. Entre em contato para atendimento.">
 
     <meta name="theme-color" content="#0b6e8e">
 
+    <!--
+        Política de segurança de conteúdo.
+        Permite:
+        - conteúdo do próprio site
+        - estilos internos
+        - imagens HTTPS
+        - Google Maps
+        - nenhum objeto/plugin externo
+        - nenhum formulário enviando dados para terceiros
+    -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data: https:;
+                   font-src 'self' https:;
+                   frame-src https://www.google.com;
+                   connect-src 'self';
+                   base-uri 'self';
+                   form-action 'self';
+                   object-src 'none';
+                   upgrade-insecure-requests;">
+
+    <!-- Impede interpretação incorreta de tipos de arquivos -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <!-- Controla quais informações de referência podem ser enviadas -->
+    <meta name="referrer"
+          content="strict-origin-when-cross-origin">
+
+    <!-- Desativa recursos que o site não utiliza -->
+    <meta http-equiv="Permissions-Policy"
+          content="camera=(), microphone=(), geolocation=()">
+
+    <title>Dra. Beatriz Gallego Castilho | Dentista 24 Horas</title>
+
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -209,7 +245,7 @@
             border-color: #0b6e8e;
         }
 
-        /* CARD HERO */
+        /* ================= HERO CARD ================= */
 
         .hero-card {
             background: white;
@@ -308,7 +344,7 @@
             color: #70838b;
         }
 
-        /* ================= EMERGENCIA ================= */
+        /* ================= EMERGÊNCIA ================= */
 
         .emergency {
             background: #0b6e8e;
@@ -671,6 +707,7 @@
                 bottom: 16px;
             }
         }
+
     </style>
 </head>
 
@@ -696,7 +733,8 @@
                 <a href="#avaliacoes">Avaliações</a>
                 <a href="#contato">Contato</a>
 
-                <a href="tel:16997574822" class="nav-button">
+                <a href="tel:16997574822"
+                   class="nav-button">
                     Ligar agora
                 </a>
             </nav>
@@ -731,7 +769,8 @@
 
                     <div class="buttons">
 
-                        <a href="tel:16997574822" class="btn btn-primary">
+                        <a href="tel:16997574822"
+                           class="btn btn-primary">
                             📞 Ligar agora
                         </a>
 
@@ -817,15 +856,20 @@
             <div class="emergency-content">
 
                 <div>
-                    <h2>Precisa de atendimento?</h2>
+
+                    <h2>
+                        Precisa de atendimento?
+                    </h2>
 
                     <p>
                         Em situações que precisam de atenção odontológica,
                         entre em contato para obter informações sobre o atendimento.
                     </p>
+
                 </div>
 
-                <a href="tel:16997574822" class="btn">
+                <a href="tel:16997574822"
+                   class="btn">
                     📞 Ligar agora
                 </a>
 
@@ -842,7 +886,8 @@
 
                 <div class="about-grid">
 
-                    <div class="about-image">
+                    <div class="about-image"
+                         aria-label="Ilustração odontológica">
                         🦷
                     </div>
 
@@ -909,7 +954,8 @@
 
         <!-- ================= AVALIAÇÕES ================= -->
 
-        <section class="reviews" id="avaliacoes">
+        <section class="reviews"
+                 id="avaliacoes">
 
             <div class="container">
 
@@ -934,7 +980,8 @@
                         5,0
                     </div>
 
-                    <div class="stars">
+                    <div class="stars"
+                         aria-label="5 estrelas">
                         ★★★★★
                     </div>
 
@@ -949,7 +996,8 @@
 
                     <div class="review">
 
-                        <div class="review-stars">
+                        <div class="review-stars"
+                             aria-label="5 estrelas">
                             ★★★★★
                         </div>
 
@@ -966,7 +1014,8 @@
 
                     <div class="review">
 
-                        <div class="review-stars">
+                        <div class="review-stars"
+                             aria-label="5 estrelas">
                             ★★★★★
                         </div>
 
@@ -982,7 +1031,8 @@
 
                     <div class="review">
 
-                        <div class="review-stars">
+                        <div class="review-stars"
+                             aria-label="5 estrelas">
                             ★★★★★
                         </div>
 
@@ -1107,6 +1157,7 @@
 
                         <iframe
                             src="https://www.google.com/maps?q=R.%20Maestro%20Jo%C3%A3o%20Seppe%2C%20900%2C%20Centro%2C%20S%C3%A3o%20Carlos%20-%20SP&output=embed"
+                            title="Localização da Dra. Beatriz Gallego Castilho"
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
@@ -1132,7 +1183,8 @@
                 Entre em contato pelo telefone ou WhatsApp.
             </p>
 
-            <a href="tel:16997574822" class="btn">
+            <a href="tel:16997574822"
+               class="btn">
                 📞 (16) 99757-4822
             </a>
 
@@ -1223,31 +1275,6 @@
         💬
 
     </a>
-
-
-    <!-- ================= JAVASCRIPT ================= -->
-
-    <script>
-
-        // Evita envio acidental de formulários caso sejam adicionados futuramente
-        document.addEventListener("submit", function(event) {
-            event.preventDefault();
-        });
-
-        // Pequeno efeito no header durante a rolagem
-        window.addEventListener("scroll", function() {
-
-            const header = document.querySelector("header");
-
-            if (window.scrollY > 50) {
-                header.style.boxShadow = "0 5px 25px rgba(0,0,0,.08)";
-            } else {
-                header.style.boxShadow = "none";
-            }
-
-        });
-
-    </script>
 
 </body>
 </html>
